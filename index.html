@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Selamat Ulang Tahun, Penulis Hebat! ✨</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL & UTILITY --- */
+        body {
+            font-family: 'Lato', sans-serif; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            
+            overflow-x: hidden !important; 
+            overflow-y: auto; 
+            
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: default;
+
+            /* --- BACKGROUND ANIMASI --- */
+            background: linear-gradient(270deg, #0077b6, #00b4d8, #0096c7, #48cae4);
+            background-size: 400% 400%; /* Ukuran lebih besar dari viewport */
+            animation: gradientAnimation 15s ease infinite; /* Animasi bergerak perlahan */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- MARQUEE (Teks Berjalan) --- */
+        .marquee-top {
+            width: 100%;
+            background-color: rgba(240, 248, 255, 0.95); /* Transparan sedikit */
+            padding: 10px 0;
+            border-bottom: 5px solid #003049; 
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .marquee-text {
+            font-family: 'Oswald', sans-serif; 
+            font-size: 2.0em; 
+            font-weight: 700;
+            color: #ffc300; 
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 15s linear infinite; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; /* Agar lebih tegas */
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(100%, 0, 0); } 
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- DASHBOARD CARD CONTAINER --- */
+        .dashboard-card {
+            background-color: rgba(255, 255, 255, 0.95); /* Sedikit transparan */
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            max-width: 750px;
+            width: 90%;
+            margin: 40px auto;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* --- PHOTO SECTION --- */
+        .card-photo-header {
+            background-color: #0077b6; 
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffffff; 
+            box-shadow: 0 0 0 5px #ffc300, 0 8px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            draggable: false;
+            -webkit-user-drag: none;
+        }
+
+        .card-photo-header h1 {
+            font-family: 'Oswald', sans-serif; 
+            color: #ffffff;
+            font-size: 2.8em; 
+            margin: 0;
+            padding-top: 10px;
+            font-weight: 700; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+        }
+
+        .card-photo-header p {
+            font-size: 1.2em;
+            color: #f0f8ff;
+            margin: 5px 0 0 0;
+        }
+        
+        /* --- CONTENT SECTION --- */
+        .card-content {
+            padding: 30px 40px;
+            line-height: 1.8;
+            text-align: justify; 
+            color: #334;
+        }
+
+        .content-paragraph {
+            margin-bottom: 25px;
+            border-left: 4px solid #00b4d8;
+            padding-left: 18px;
+            font-size: 1.05em;
+        }
+
+        .emphasis {
+            font-weight: 700;
+            color: #e63946; 
+        }
+        
+        /* --- Signature Section --- */
+        .signature-area {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .signature {
+            font-family: 'Oswald', sans-serif; 
+            font-weight: 500;
+            font-size: 1.6em; 
+            color: #003049;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        /* --- PARTIKEL BINTANG & PENSIL BERJATUHAN (Optimized) --- */
+        .particle-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            color: #fff; /* Warna partikel: Putih */
+            font-size: 20px;
+            animation: particleFall linear infinite;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Efek glow */
+            will-change: transform, opacity; 
+        }
+        .particle.pencil-icon { /* Untuk pensil biar beda warna */
+            color: #4b0082; /* Warna ungu pena */
+            font-size: 25px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes particleFall {
+            0% { transform: translate3d(var(--x, 0), -10vh, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate3d(var(--x, 0), 100vh, 0) rotate(720deg); opacity: 0; } /* Opacity 0 di akhir */
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .card-photo {
+                width: 150px;
+                height: 150px;
+            }
+            .marquee-text {
+                font-size: 1.6em;
+            }
+            .card-photo-header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particle-animation" id="particle-animation"></div>
+
+    <div class="marquee-top">
+        <div class="marquee-text">
+            ✨ HAPPY BIRTHDAY, ENJEL! | SEMOGA TAHUN INI DAN KEDEPANNYA BISA MENJADI PRIBADI YANG LEBIH BAIK LAGI 😍 ✨
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        
+        <div class="card-photo-header">
+            <img 
+                src="/Screenshot_2025-11-22-06-06-23-66_f69139cffc4d135a71392e13634f144a.jpg" 
+                alt="Foto Spesial untuk Enjel" 
+                class="card-photo"
+            >
+            <h1>HAPPY BIRTHDAY, ENJEL! SAYANG</h1>
+            <p>🫰🏻💗</p>
+        </div>
+
+        <div class="card-content">
+            
+            <p class="content-paragraph"> Pada tgl 25 November 2025
+                Di usia yang baru ini, semoga langkahmu semakin mantap menuju <span class="emphasis">cita-cita sebagai penulis</span>. Kekuatan imajinasi dan kedalaman rasa yang kamu miliki adalah modal unik yang kelak akan menjadi sebuah karya besar. <span class="emphasis">Teruslah percaya pada proses dan keunikan dirimu sendiri.</span>
+            </p>
+
+            <p class="content-paragraph">
+                Untuk keluargamu, Aku juga turut mendoakan. Semoga masa kejayaan yang dinantikan dapat kembali, hadir dalam bentuk yang lebih membahagiakan. Kamu layak menyaksikan semua hal membaik, dan kamu adalah sumber inspirasi penting bagi perubahan itu.
+            </p>
+
+            <p class="content-paragraph">
+                Semoga tahun ini menjadi babak baru yang membawa segala kebaikan dan kesempatan yang kamu butuhkan. Tetaplah menjadi Enjel yang berhati baik dan penuh impian.
+            </p>
+
+            <div class="signature-area">
+                <div class="signature">
+                    ✿✨ dari aku manusia imoouupp 😙, makasii udaah jadi teman baik aku ✨✿
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <script>
+        const animationArea = document.getElementById('particle-animation');
+        const starIcons = ['💗']; // Emotikon bintang
+        const pencilIcons = ['✏️', '✒️', '📝']; // Emotikon pensil
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Randomly choose between star or pencil
+            let iconSet = Math.random() < 0.8 ? starIcons : pencilIcons; // 10% bintang, 20% pensil
+            particle.innerHTML = iconSet[Math.floor(Math.random() * iconSet.length)];
+
+            if (iconSet === pencilIcons) {
+                particle.classList.add('pencil-icon'); // Tambahkan class khusus untuk pensil
+            }
+            
+            // Posisi, durasi, dan ukuran acak
+            const startX = Math.random() * 100; // Posisi X awal
+            particle.style.setProperty('--x', `${(Math.random() - 0.5) * 50}px`); // Sedikit gerakan horizontal
+            particle.style.left = startX + 'vw';
+            const duration = Math.random() * 8 + 6; // 6 - 14 detik
+            particle.style.animationDuration = duration + 's';
+            particle.style.fontSize = Math.random() * 15 + 18 + 'px'; // 18 - 33px
+            particle.style.animationDelay = `-${Math.random() * 5}s`; // Agar muncul dari awal
+
+            animationArea.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000 + 1000); 
+        }
+
+        // Buat partikel baru setiap 250 milidetik untuk efek ramai tapi halus
+        setInterval(createParticle, 250); 
+
+        // Untuk memastikan animasi berjalan dari awal
+        for (let i = 0; i < 50; i++) { // Buat beberapa partikel awal
+            createParticle();
+        }
+    </script>
+
+</body>
+</html>
